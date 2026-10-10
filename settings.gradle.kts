@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MyMovieDB"
+rootProject.name = "Flix-Sync"
 include(":app")
  

@@ -17,11 +17,11 @@ if (localPropertiesFile.exists()) {
 val tmdbApiKey = localProperties.getProperty("TMDB_API_KEY", "\"STUB_KEY\"")
 
 android {
-    namespace = "com.example.mymoviedb"
+    namespace = "com.example.flixsync"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.mymoviedb"
+        applicationId = "com.example.flixsync"
         minSdk = 30
         targetSdk = 36
         versionCode = 1
@@ -70,6 +70,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -100,14 +101,20 @@ dependencies {
     // Serialization
     implementation(libs.kotlinx.serialization.json)
 
+    // DataStore
+    implementation(libs.datastore.preferences)
+
     // WorkManager & Hilt Work
     implementation(libs.work.runtime.ktx)
     implementation(libs.hilt.work)
     ksp(libs.hilt.work.compiler)
 
     testImplementation(libs.junit)
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.coroutines.test)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
